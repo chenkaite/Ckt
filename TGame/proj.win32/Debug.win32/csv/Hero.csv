@@ -1,0 +1,4 @@
+ID,Name,Type,ModelID,Atk,AtkSpeed,AtkRange,UpgradeAtkBase,UpgradeCostBase
+英雄ID,名字,类别,模型ID,攻击力,攻击速度,攻击范围,升级攻击加成（倍数）,升级消耗基础值
+1,Demo英雄,1,1,5,1000,150,2.2,5
+2,我很强的,1,2,10,100,200,2.5,10
