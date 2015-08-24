@@ -21,8 +21,7 @@ bool GameOverLayer::init()
 		{
 			
 			Director::getInstance()->getRunningScene()->removeAllChildrenWithCleanup(true);
-			Director::getInstance()->getRunningScene()->removeAllComponents();
-			Director::getInstance()->getRunningScene()->stopAllActions();
+			
 			auto scene = MainScene::createScene();
 			Director::getInstance()->runWithScene(scene);
 			Director::getInstance()->resume();
