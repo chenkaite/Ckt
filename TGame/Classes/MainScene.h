@@ -37,6 +37,7 @@ private:
 	bool isDoubleSpeed;//是否双倍速度
 	int copyMonsSpeed;//怪物生成时间间隔
 private:
+	LayerColor* createPauseLayer();
 	void addListen();
 	Vector<Node*> getMoveVec(const std::string &name);
 	void addAnything();
