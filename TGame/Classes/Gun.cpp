@@ -40,8 +40,7 @@ Gun* Gun::create(int level)
 	}
 	else
 	{
-		delete gun;
-		gun = NULL;
+		CC_SAFE_DELETE(gun);
 		return NULL;
 	}
 }
