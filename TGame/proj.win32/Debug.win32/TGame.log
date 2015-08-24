@@ -1,24 +1,16 @@
-﻿生成启动时间为 2015/8/16 星期日 17:29:18。
-     1>项目“G:\cocosWorkSapce\TGame\proj.win32\TGame.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2015/8/24 星期一 15:49:25。
+     1>项目“G:\GitHubWorkSpace\Ckt\TGame\proj.win32\TGame.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          C:\Program Files\VC\bin\CL.exe /c /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\audio\include" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\external" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\external\chipmunk\include\chipmunk" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\extensions" /I..\Classes /I.. /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\cocos\editor-support" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\cocos" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\cocos\platform" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\cocos\platform\desktop" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\external\glfw3\include\win32" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\external\win32-specific\gles\include\OGLES" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\external\freetype2\include\win32\freetype2" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\external\freetype2\include\win32\\" /I"E:\Cocos\frameworks\cocos2d-x-3.7.1\cocos\2d\..\..\external" /ZI /nologo /W3 /WX- /MP /Od /Oy- /D WIN32 /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _VARIADIC_MAX=10 /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\MainScene.cpp
          MainScene.cpp
-     1>g:\cocosworksapce\tgame\classes\mainscene.cpp(94): warning C4996: 'cocos2d::String': 被声明为已否决
-                 e:\cocos\frameworks\cocos2d-x-3.7.1\cocos\deprecated\ccdeprecated.h(1051) : 参见“cocos2d::String”的声明
-     1>g:\cocosworksapce\tgame\classes\mainscene.cpp(130): warning C4996: 'cocos2d::String': 被声明为已否决
-                 e:\cocos\frameworks\cocos2d-x-3.7.1\cocos\deprecated\ccdeprecated.h(1051) : 参见“cocos2d::String”的声明
-     1>g:\cocosworksapce\tgame\classes\mainscene.cpp(196): warning C4996: 'cocos2d::String': 被声明为已否决
-                 e:\cocos\frameworks\cocos2d-x-3.7.1\cocos\deprecated\ccdeprecated.h(1051) : 参见“cocos2d::String”的声明
-     1>g:\cocosworksapce\tgame\classes\mainscene.cpp(217): warning C4996: 'cocos2d::String': 被声明为已否决
-                 e:\cocos\frameworks\cocos2d-x-3.7.1\cocos\deprecated\ccdeprecated.h(1051) : 参见“cocos2d::String”的声明
        PreLinkEvent:
-         if not exist "G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\" mkdir "G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\"
-         xcopy /Y /Q "E:\Cocos\frameworks\cocos2d-x-3.7.1\prebuilt\win32\*.*" "G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\"
+         if not exist "G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\" mkdir "G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\"
+         xcopy /Y /Q "E:\Cocos\frameworks\cocos2d-x-3.7.1\prebuilt\win32\*.*" "G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\"
          
          :VCEnd
          复制了 60 个文件
        Link:
-         C:\Program Files\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\TGame.exe" /INCREMENTAL /NOLOGO /LIBPATH:G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\ /LIBPATH:G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\ opengl32.lib glew32.lib libzlib.lib libwebp.lib libiconv.lib freetype250.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\TGame.pdb" /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\TGame.lib" /MACHINE:X86 /SAFESEH Debug.win32\game.res
+         C:\Program Files\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\TGame.exe" /INCREMENTAL /NOLOGO /LIBPATH:G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\ /LIBPATH:G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\ opengl32.lib glew32.lib libzlib.lib libwebp.lib libiconv.lib freetype250.lib winmm.lib ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\TGame.pdb" /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\TGame.lib" /MACHINE:X86 /SAFESEH Debug.win32\game.res
          Debug.win32\AppDelegate.obj
          Debug.win32\Background.obj
          Debug.win32\Blood.obj
@@ -29,15 +21,15 @@
          Debug.win32\Monster.obj
          Debug.win32\PauseLayer.obj
          Debug.win32\main.obj
-         TGame.vcxproj -> G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\TGame.exe
+         TGame.vcxproj -> G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\TGame.exe
        CustomBuildStep:
-         if not exist "G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\" mkdir "G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\"
-         xcopy "G:\cocosWorkSapce\TGame\proj.win32\..\Resources" "G:\cocosWorkSapce\TGame\proj.win32\Debug.win32\" /D /E /I /F /Y
+         if not exist "G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\" mkdir "G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\"
+         xcopy "G:\GitHubWorkSpace\Ckt\TGame\proj.win32\..\Resources" "G:\GitHubWorkSpace\Ckt\TGame\proj.win32\Debug.win32\" /D /E /I /F /Y
                
          :VCEnd
          复制了 0 个文件
-     1>已完成生成项目“G:\cocosWorkSapce\TGame\proj.win32\TGame.vcxproj”(Build 个目标)的操作。
+     1>已完成生成项目“G:\GitHubWorkSpace\Ckt\TGame\proj.win32\TGame.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:50.30
+已用时间 00:00:36.05
