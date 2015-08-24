@@ -33,7 +33,7 @@ bool MainScene::init()
 	money = 100;//金币数量
 	fanwei = nullptr;//武器攻击范围
 	moveTime = 0;//怪物生成时间计时器初始化
-	addCache();//添加图片缓存
+ 	addCache();//添加图片缓存
 	addBg();//添加背景
 	addAnything();//添加杂项
 	addListen();
