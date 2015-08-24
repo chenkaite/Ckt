@@ -36,13 +36,17 @@ bool MainScene::init()
 	addCache();//Ìí¼ÓÍ¼Æ¬»º´æ
 	addBg();//Ìí¼Ó±³¾°
 	addAnything();//Ìí¼ÓÔÓÏî
+	addListen();
+	schedule(schedule_selector(MainScene::moveUpdate), 0.1f);
+    return true;
+}
+void MainScene::addListen()
+{
 	auto listen = EventListenerTouchOneByOne::create(); //Ìí¼Óµ¥µã´¥Ãş
 	listen->onTouchBegan = CC_CALLBACK_2(MainScene::onTouchBegan, this);
 	listen->onTouchMoved = CC_CALLBACK_2(MainScene::onTouchMoved, this);
 	listen->onTouchEnded = CC_CALLBACK_2(MainScene::onTouchEnded, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listen, this);
-	schedule(schedule_selector(MainScene::moveUpdate), 0.1f);
-    return true;
 }
 void MainScene::addBg()
 {
@@ -276,11 +280,15 @@ bool MainScene::onTouchBegan(Touch* t, Event* e)
 	{
 		if (getChildByTag(PauseLayerTag) == nullptr)
 		{
-			auto layer = PauseLayer::create();
+			_eventDispatcher->removeAllEventListeners();
+			Director::getInstance()->pause();
+			auto layer = createPauseLayer();
 			addChild(layer, 50, PauseLayerTag);
 		}
 		else
 		{
+			addListen();
+			Director::getInstance()->resume();
 			removeChildByTag(PauseLayerTag);
 		}
 	}
@@ -386,4 +394,36 @@ void MainScene::onTouchEnded(Touch* t, Event* e)
 		touchingGun = nullptr;
 	}
 	gunPos->setVisible(false);
+}
+LayerColor* MainScene::createPauseLayer()
+{
+	auto LayerC = LayerColor::create(Color4B(112, 128, 144, 100), 800, 450);
+	auto menuBg = Sprite::createWithSpriteFrameName("menu_bg.png");
+	LayerC->addChild(menuBg, 20);
+	menuBg->setPosition(LayerC->getContentSize() / 2);
+	auto resume_normal = Sprite::createWithSpriteFrameName("menu_resume_normal_CN.png");
+	auto resume_pressed = Sprite::createWithSpriteFrameName("menu_resume_pressed_CN.png");
+	auto quit_normal = Sprite::createWithSpriteFrameName("menu_quit_normal_CN.png");
+	auto quit_pressed = Sprite::createWithSpriteFrameName("menu_quit_pressed_CN.png");
+	auto restart_normal = Sprite::createWithSpriteFrameName("menu_restart_normal_CN.png");
+	auto restart_pressed = Sprite::createWithSpriteFrameName("menu_restart_pressed_CN.png");
+	auto quit = MenuItemSprite::create(quit_normal, quit_pressed, nullptr);
+	auto resume = MenuItemSprite::create(resume_normal, resume_pressed, [&](Ref* sender)
+	{
+		addListen();
+		removeChildByTag(PauseLayerTag);
+		Director::getInstance()->resume();
+	});
+	auto restart = MenuItemSprite::create(restart_normal, restart_pressed, [](Ref* sender){
+		Director::getInstance()->getRunningScene()->removeAllChildrenWithCleanup(true);
+		auto scene = MainScene::createScene();
+		Director::getInstance()->runWithScene(scene);
+		Director::getInstance()->resume();
+	});
+	auto menu = Menu::create(quit, resume, restart, nullptr);
+	restart->setPositionY(2);
+	quit->setPositionY(-61);
+	resume->setPositionY(62.5);
+	LayerC->addChild(menu, 21);
+	return LayerC;
 }
