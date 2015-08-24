@@ -19,9 +19,8 @@ bool GameOverLayer::init()
 	{
 		if (restart->getBoundingBox().containsPoint(t->getLocation()))
 		{
-			int s = (int)Director::getInstance()->getRunningScene()->getChildrenCount();
+			
 			Director::getInstance()->getRunningScene()->removeAllChildrenWithCleanup(true);
-			s = (int)Director::getInstance()->getRunningScene()->getChildrenCount();
 			Director::getInstance()->getRunningScene()->removeAllComponents();
 			Director::getInstance()->getRunningScene()->stopAllActions();
 			auto scene = MainScene::createScene();
