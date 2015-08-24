@@ -28,7 +28,7 @@ bool MainScene::init()
 	guns->clear();
 	bullets->clear();
 	auto size = Director::getInstance()->getVisibleSize();
-	bloodIndex = 4;//血量图片在集合中的下标
+	bloodIndex = 5;//血量图片在集合中的下标
 	copyMonsSpeed = 20;//怪物生成时间间隔
 	money = 100;//金币数量
 	fanwei = nullptr;//武器攻击范围
@@ -62,6 +62,7 @@ void MainScene::moveUpdate(float dt)
 	{
 		if (getChildByTag(GameOverTag) == nullptr)
 		{
+			_eventDispatcher->removeAllEventListeners();
 			auto gameOverLayer = GameOverLayer::create();
 			addChild(gameOverLayer, GameOverTag);
 			Director::getInstance()->pause();
@@ -89,10 +90,11 @@ void MainScene::moveUpdate(float dt)
 		if (mons->at(i)->getBlood()->pt->getPercentage() <= 0&&mons->at(i)->isVisible())
 		{
 			money += mons->at(i)->getMoney();
-			char countBuf[16] = "";
+			/*char countBuf[16] = "";
 			sprintf(countBuf, "%d", money);
 			String cs = countBuf;
-			auto moneyNum = cs.getCString();
+			auto moneyNum = cs.getCString();*/
+			auto moneyNum = StringUtils::format("%d",money);
 			static_cast<Label*>(getChildByTag(MoneyLabel))->setString(moneyNum);
 			mons->at(i)->setVisible(false);
 		}
@@ -176,11 +178,8 @@ void MainScene::addAnything()
 	//血量图片1-9
 	for (int i = 1; i < 10; i++)
 	{
-		char buffer[20] = {0};
-		sprintf(buffer,"%d.png",i);
-		std::string s = "BossHP0";
-		std::string sb = s + buffer;
-		auto sp = SpriteFrameCache::getInstance()->getSpriteFrameByName(sb);
+		auto hp = StringUtils::format("BossHP0%d.png",i);
+		auto sp = SpriteFrameCache::getInstance()->getSpriteFrameByName(hp);
 		bloodPics.pushBack(sp);
 	}
 	auto sp = Sprite::createWithSpriteFrameName("MenuBG.png");//添加武器背景
@@ -191,11 +190,13 @@ void MainScene::addAnything()
 	addChild(gun2);
 	gunPics.pushBack(gun2);//添加到武器图片库
 	//金钱数字
-	char countBuf[16] = "";
+	/*char countBuf[16] = "";
 	sprintf(countBuf, "%d", money);
-	String cs = countBuf;
-	auto moneyNum = cs.getCString();
-	auto moneyLabel = Label::createWithTTF(moneyNum, "gameFont.ttf", 30);
+	String cs = countBuf;*/
+	auto stringMoney = StringUtils::format("%d",money);
+	/*auto moneyNum = cs.getCString();*/
+	
+	auto moneyLabel = Label::createWithTTF(stringMoney, "gameFont.ttf", 30);
 	addChild(moneyLabel);
 	moneyLabel->setTag(MoneyLabel);
 	moneyLabel->setPosition(org.x + 180, size.height - moneyLabel->getContentSize().height / 2);
