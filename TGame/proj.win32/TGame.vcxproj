@@ -154,6 +154,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.7.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\Gun.cpp" />
     <ClCompile Include="..\Classes\MainScene.cpp" />
     <ClCompile Include="..\Classes\Monster.cpp" />
+    <ClCompile Include="..\Classes\PauseLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +167,7 @@ xcopy /Y /Q "$(COCOS_FRAMEWORKS)\cocos2d-x-3.7.1\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\MainScene.h" />
     <ClInclude Include="..\Classes\Monster.h" />
     <ClInclude Include="..\Classes\ObjectTag.h" />
+    <ClInclude Include="..\Classes\PauseLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
