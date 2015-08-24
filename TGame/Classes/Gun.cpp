@@ -49,11 +49,10 @@ Animation* Gun::createAnimation(std::string prefixName, int framesNum, float del
 	Vector<SpriteFrame*> vec;
 	for (int i = startNum; i < (framesNum+startNum); i++)
 	{
-		/*char buffer[20] = { 0 };
+		char buffer[20] = { 0 };
 		sprintf(buffer, "-%d.png", i);
 		std::string frameName = prefixName + buffer;
-		frameName = StringUtils::format("-%d.png", i);*/
-		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(StringUtils::format("-%d.png", i));
+		auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(frameName);
 		vec.pushBack(frame);
 	}
 	return Animation::createWithSpriteFrames(vec,delay);
