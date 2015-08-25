@@ -55,24 +55,24 @@ void Monster::moveUpdate(float dt)
 {
 	if (startNum == goalVec.size()-1)
 		return;
-	auto selfPos = getPosition();
-	auto goalPos = goalVec.at(startNum + 1)->getPosition();
-	auto finalPos = goalPos - selfPos;
+	auto selfPos = getPosition();//自身位置
+	auto goalPos = goalVec.at(startNum + 1)->getPosition();//目标位置
+	auto finalPos = goalPos - selfPos;//最终的自身位置
 	if (distancePos == Vec2(0, 0))
 	{
-		distancePos = goalPos-goalVec.at(startNum)->getPosition();
+		distancePos = goalPos-goalVec.at(startNum)->getPosition();//下一个目标位置减去当前目标位置的距离
 	}
 	if (abs(finalPos.x) > abs(finalPos.y))
 	{
 		if (finalPos.x > 0)
 		{
-			setPositionX(getPositionX() + speed);
 			if (distancePos.x < 0)
 			{
 				startNum += 1;
 				distancePos = Vec2(0, 0);
 				return;
 			}
+			setPositionX(getPositionX() + speed);
 		}
 		else if (finalPos.x<0)
 		{
@@ -83,6 +83,7 @@ void Monster::moveUpdate(float dt)
 				return;
 			}
 			setPositionX(getPositionX() - speed);
+			
 		}
 		else if (finalPos.x == 0)
 		{

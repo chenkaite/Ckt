@@ -8,6 +8,7 @@ bool Gun::init(int level)
 	firedMons = nullptr;
 	sellSp = nullptr;
 	updateSp = nullptr;
+	canFire = true;
 	firePosition = Vec2(0, 0);
 	switch (level)
 	{
@@ -59,7 +60,7 @@ Animation* Gun::createAnimation(std::string prefixName, int framesNum, float del
 }
 void Gun::fire()
 {
-	if (MainScene::mons->size()>1 && bullet == nullptr&&this->isRunning())
+	if (MainScene::mons->size()>1 && bullet == nullptr&&this->isRunning()&&canFire)
 	{
 		if (firePosition == Vec2(0, 0))
 		{

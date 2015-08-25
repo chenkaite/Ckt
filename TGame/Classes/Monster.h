@@ -18,8 +18,9 @@ public:
 	CC_SYNTHESIZE(int, money, Money);
 	CC_SYNTHESIZE(int, startNum, StartNum);
 	Animation* createAnimation(std::string prefixName, int framesNum, float delay);
-private:
 	void moveUpdate(float dt);
+private:
+	
 	Vec2 distancePos;
 	bool getMonsterConfig();
 

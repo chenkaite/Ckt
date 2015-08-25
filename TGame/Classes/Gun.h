@@ -27,6 +27,7 @@ public:
 	CC_SYNTHESIZE(int, level, Level);
 	CC_SYNTHESIZE(float, speed, Speed);
 	CC_SYNTHESIZE(int, attack, Attack);
+	CC_SYNTHESIZE(int, canFire, CanFire);
 	CC_SYNTHESIZE(Vector<Monster*>, monster, Monster);
 	Vector<Bullet*> vector_bullet;
 	
