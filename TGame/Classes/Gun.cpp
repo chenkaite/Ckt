@@ -24,7 +24,6 @@ bool Gun::init(int level)
 		setLevel(2);
 		startFrameNum = 11;
 		frameName = "PStar";
-		
 		auto action = createAnimation(frameName, 5, 0.05f, startFrameNum);
 		AnimationCache::getInstance()->addAnimation(action,"PStar");
 		break;

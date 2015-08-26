@@ -93,13 +93,11 @@ void MainScene::moveUpdate(float dt)
 	{
 		if (mons->at(i)->getBlood()->pt->getPercentage() <= 0&&mons->at(i)->isVisible())
 		{
+			auto moneyLa = static_cast<Label*>(getChildByTag(MoneyLabel));
+			auto money = atoi(moneyLa->getString().c_str());
 			money += mons->at(i)->getMoney();
-			/*char countBuf[16] = "";
-			sprintf(countBuf, "%d", money);
-			String cs = countBuf;
-			auto moneyNum = cs.getCString();*/
 			auto moneyNum = StringUtils::format("%d",money);
-			static_cast<Label*>(getChildByTag(MoneyLabel))->setString(moneyNum);
+			moneyLa->setString(moneyNum);
 			mons->at(i)->setVisible(false);
 		}
 	}
@@ -194,12 +192,7 @@ void MainScene::addAnything()
 	addChild(gun2);
 	gunPics.pushBack(gun2);//Ìí¼Óµ½ÎäÆ÷Í¼Æ¬¿â
 	//½ðÇ®Êý×Ö
-	/*char countBuf[16] = "";
-	sprintf(countBuf, "%d", money);
-	String cs = countBuf;*/
 	auto stringMoney = StringUtils::format("%d",money);
-	/*auto moneyNum = cs.getCString();*/
-	
 	auto moneyLabel = Label::createWithTTF(stringMoney, "gameFont.ttf", 30);
 	addChild(moneyLabel);
 	moneyLabel->setTag(MoneyLabel);
@@ -238,9 +231,8 @@ void MainScene::doubleSpeed()
 		auto ss = (Sprite*)getChildByTag(SpeedButoon);
 		ss->setSpriteFrame("speed22.png");
 		isDoubleSpeed = true;
-		copyMonsSpeed = copyMonsSpeed / 2;
-
-		for (int i = 0; i < mons->size(); i++)
+		/*copyMonsSpeed = copyMonsSpeed / 2;*/
+		for (int i = mons->size()-1; i>=0; --i)
 		{
 			auto item = mons->at(i);
 			item->setSpeed(item->getSpeed() * 2);
@@ -256,7 +248,7 @@ void MainScene::doubleSpeed()
 		auto ss = (Sprite*)getChildByTag(SpeedButoon);
 		ss->setSpriteFrame("speed11.png");
 		isDoubleSpeed = false;
-		copyMonsSpeed = copyMonsSpeed * 2;
+		/*copyMonsSpeed = copyMonsSpeed * 2;*/
 		for (int i = 0; i < mons->size(); i++)
 		{
 			auto item = mons->at(i);
@@ -318,19 +310,30 @@ bool MainScene::onTouchBegan(Touch* t, Event* e)
 		{
 			if (gun->getSellSp()->getBoundingBox().containsPoint(t->getLocation()))
 			{
+
 				gun->getSellSp()->removeFromParent();
 				gun->getUpdateSp()->removeFromParent();
 				gun->getFanwei()->setVisible(false);
+				gun->setCanFire(false);
 				gun->setVisible(false);
+				guns->eraseObject(gun);
+				auto money = static_cast<Label*>(getChildByTag(MoneyLabel));//Âôµô¼ÓÇ®
+				auto moneyNum = atoi(money->getString().c_str());
+				moneyNum += 128;
+				money->setString(StringUtils::format("%d",moneyNum));
 				return false;
 			}
 			else if (gun->getUpdateSp()->getBoundingBox().containsPoint(t->getLocation()))
 			{
 				log("update");
+				gun->setAttack(gun->getAttack() * 2);
+				gun->getFanwei()->setVisible(false);
+				gun->getSellSp()->setVisible(false);
+				gun->getUpdateSp()->setVisible(false);
 				return false;
 			}
 		}
-		if (gun->getBoundingBox().containsPoint(t->getLocation()))
+		if (gun->getBoundingBox().containsPoint(t->getLocation()))//Ñ¡ÖÐÎäÆ÷ÏÔÊ¾Éý¼¶ÓëÂôµô°´Å¥
 		{
 			if (!gun->getFanwei()->isVisible())
 			{
@@ -378,7 +381,9 @@ void MainScene::onTouchEnded(Touch* t, Event* e)
 {
 	if (touchingGun != nullptr)
 	{
-		if (!canSetGun(t->getLocation(), touchingGun->getBoundingBox()))
+		auto moneLabels = static_cast<Label*>(getChildByTag(MoneyLabel));
+		auto money = atoi(moneLabels->getString().c_str());
+		if (!canSetGun(t->getLocation(), touchingGun->getBoundingBox())||money<50)
 		{
 			touchingGun->removeFromParent();
 			fanwei->removeFromParent();
@@ -390,6 +395,9 @@ void MainScene::onTouchEnded(Touch* t, Event* e)
 			touchingGun->setFanwei(fanwei);
 			touchingGun->schedule(schedule_selector(Gun::updateFire), 0.5f);
 			fanwei->setVisible(false);
+			money -= 50;
+			moneLabels->setString(StringUtils::format("%d",money));
+				
 		}
 		touchingGun = nullptr;
 	}
